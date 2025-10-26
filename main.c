@@ -3,24 +3,36 @@
 #include <string.h> 
 #include "database.h"
 
+void print_client_info(ClientData data) {
+    printf("ID: %d\n", data.id);
+    printf("FullName: %s\n", data.fullname);
+    printf("Login: %s\n", data.login);
+    printf("Password: %s\n", data.password);
+    printf("Phone number: %s\n", data.phone_number);
+    printf("Balance: %d\n", data.balance);
+    printf(data.is_banned ? "Blocked\n" : "Unblocked\n");
+}
+
 static void on_button_clicked(GtkWidget *widget, gpointer data) {
     
-    ClientData new_client = {0};
+    // ClientData new_client = {0};
     
     
-    strcpy(new_client.login, "Azi");  
-    strcpy(new_client.password, "123");
-    strcpy(new_client.fullname, "Sarlaks");
-    strcpy(new_client.phone_number, "(555) 353-4444"); 
+    // strcpy(new_client.login, "Azi");  
+    // strcpy(new_client.password, "123");
+    // strcpy(new_client.fullname, "Sarlaks");
+    // strcpy(new_client.phone_number, "(555) 353-4444"); 
     
-    new_client.balance = 100000;
-    new_client.is_banned = 0;
+    // new_client.balance = 100000;
+    // new_client.is_banned = 0;
     
-    addClient(new_client);
+    // addClient(new_client);
     
-    getBalance(1);
+    // getBalance(1);
 
-    Deposit(1, 1000);
+    // Deposit(1, 1000);
+
+    ChangeStatus(1);
     g_print("Кнопка нажата!\n");
 }
 
