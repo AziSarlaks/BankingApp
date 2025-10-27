@@ -1,4 +1,5 @@
 #include "database.h"
+#include "encoder.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -49,7 +50,7 @@ int addClient(ClientData data)
 
     sqlite3_bind_text(stmt, 1, data.phone_number, -1, SQLITE_STATIC);
     sqlite3_bind_text(stmt, 2, data.login, -1, SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 3, data.password, -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 3, encode(data.password), -1, SQLITE_STATIC);
     sqlite3_bind_text(stmt, 4, data.fullname, -1, SQLITE_STATIC);
     sqlite3_bind_int(stmt, 5, data.balance);
     sqlite3_bind_int(stmt, 6, data.is_banned);
@@ -208,7 +209,7 @@ ClientData findUserbyID(int id)
     if (rc == SQLITE_ROW)
     {
         const unsigned char *login = sqlite3_column_text(stmt, 1);
-        const unsigned char *password = sqlite3_column_text(stmt, 2);
+        const unsigned char *password = decode(sqlite3_column_text(stmt, 2));
         const unsigned char *phone = sqlite3_column_text(stmt, 3);
         const unsigned char *fullname = sqlite3_column_text(stmt, 4);
         int balance = sqlite3_column_int(stmt, 5);

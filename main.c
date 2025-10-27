@@ -15,16 +15,16 @@ void print_client_info(ClientData data) {
 
 static void on_button_clicked(GtkWidget *widget, gpointer data) {
     
-    // ClientData new_client = {0};
+    ClientData new_client = {0};
     
     
-    // strcpy(new_client.login, "Azi");  
-    // strcpy(new_client.password, "123");
-    // strcpy(new_client.fullname, "Sarlaks");
-    // strcpy(new_client.phone_number, "(555) 353-4444"); 
+    strcpy(new_client.login, "Azi");  
+    strcpy(new_client.password, "12345");
+    strcpy(new_client.fullname, "Sarlaks");
+    strcpy(new_client.phone_number, "(555) 353-4444"); 
     
-    // new_client.balance = 100000;
-    // new_client.is_banned = 0;
+    new_client.balance = 100000;
+    new_client.is_banned = 0;
     
     // addClient(new_client);
     
@@ -32,7 +32,8 @@ static void on_button_clicked(GtkWidget *widget, gpointer data) {
 
     // Deposit(1, 1000);
 
-    ChangeStatus(1);
+    // ChangeStatus(1);
+    print_client_info(findUserbyID(3));
     g_print("Кнопка нажата!\n");
 }
 
